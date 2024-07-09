@@ -1,65 +1,82 @@
-# Solidityy
 
-A repository containing smart contracts and related code written in Solidity.
+# ETH PROOF: Beginner EVM Course Project
 
-## Table of Contents
+A repository for developing and showcasing various smart contracts written in Solidity, aimed at helping developers learn and implement blockchain solutions on Ethereum.
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+## Description
 
-## Introduction
+This repository is for my submission in metacrafters - ETH PROOF: Beginner EVM Course which focused on the development of smart contracts using the Solidity programming language. This repository includes various smart contracts, examples, and tools to help developers get started with Ethereum blockchain development. 
 
-Solidityy is a repository focused on the development of smart contracts using the Solidity programming language. This repository includes various smart contracts, examples, and tools to help developers get started with Ethereum blockchain development.
+## Getting Started
 
-## Features
+### Installing
 
-- **Smart Contracts**
-  - Examples of various smart contracts written in Solidity
-  - Best practices and design patterns for Solidity development
-
-- **Tools and Utilities**
-  - Scripts for deploying and interacting with smart contracts
-  - Integration with popular Ethereum development frameworks like Truffle and Hardhat
-
-## Installation
-
-To get a local copy up and running follow these simple steps.
-
-1. Clone the repo
-   
+* Clone the repo from GitHub
    git clone https://github.com/nnerr/solidityy.git
-  
-2. Install dependencies
    
+* Install dependencies
+
    npm install
    
+### Executing program
 
-## Usage
+To run this program, you can use Remix, an online Solidity IDE. To get started, go to the Remix website at https://remix.ethereum.org/.
 
-1. Compile the smart contracts
-   
-   npx hardhat compile
-   
-2. Deploy the smart contracts to a local blockchain
-   
-   npx hardhat run scripts/deploy.js --network localhost
-   
-3. Interact with the deployed contracts
-   
-   npx hardhat console --network localhost
+Once you are on the Remix website, create a new file by clicking on the "+" icon in the left-hand sidebar. Save the file with a .sol extension (e.g., Solidity.sol). Copy and paste the following code into the file:
+  ```sh
+  pragma solidity 0.8.26;
 
+/*
+       REQUIREMENTS
+    1. Your contract will have public variables that store the details about your coin (Token Name, Token Abbrv., Total Supply)
+    2. Your contract will have a mapping of addresses to balances (address => uint)
+    3. You will have a mint function that takes two parameters: an address and a value. 
+       The function then increases the total supply by that number and increases the balance 
+       of the “sender” address by that amount
+    4. Your contract will have a burn function, which works the opposite of the mint function, as it will destroy tokens. 
+       It will take an address and value just like the mint functions. It will then deduct the value from the total supply 
+       and from the balance of the “sender”.
+    5. Lastly, your burn function should have conditionals to make sure the balance of "sender" is greater than or equal 
+       to the amount that is supposed to be burned.
+*/
+
+contract MyToken {
+
+    // public variables here
+    string public tokenName = "Nerz";
+    string public tokenAbbrv = "Nrz";
+    uint public totalSupply = 0;
+
+    // mapping variable here
+    mapping(address => uint) public balances;
+    // mint function
+    function mint (address _address, uint _value) public {
+        totalSupply += _value;
+        balances[_address] += _value;
+    }
+    // burn function
+        function burn (address _address, uint _value) public {
+        if (balances[_address] >= _value) {
+        totalSupply -= _value;
+        balances[_address] -= _value;
+        }
+    }
+}
+
+  ```
+## Help
+
+Any advice for common problems or issues.
+```sh
+npx hardhat help
+```
+
+## Authors
+
+Contributors names and contact info
+
+Jonner Villapando
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
-
-## Contact
-
-Ner - 202110226@fit.edu.ph
-
-```
-
+This project is licensed under the MIT License - see the LICENSE.md file for details
