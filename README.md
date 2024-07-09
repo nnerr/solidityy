@@ -1,5 +1,3 @@
-
-```markdown
 # Solidityy
 
 A repository containing smart contracts and related code written in Solidity.
@@ -32,28 +30,28 @@ Solidityy is a repository focused on the development of smart contracts using th
 To get a local copy up and running follow these simple steps.
 
 1. Clone the repo
-   ```sh
+   
    git clone https://github.com/nnerr/solidityy.git
-   ```
+  
 2. Install dependencies
-   ```sh
+   
    npm install
-   ```
+   
 
 ## Usage
 
 1. Compile the smart contracts
-   ```sh
+   
    npx hardhat compile
-   ```
+   
 2. Deploy the smart contracts to a local blockchain
-   ```sh
+   
    npx hardhat run scripts/deploy.js --network localhost
-   ```
+   
 3. Interact with the deployed contracts
-   ```sh
+   
    npx hardhat console --network localhost
-   ```
+
 
 ## Contributing
 
